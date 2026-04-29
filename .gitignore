@@ -1,0 +1,6 @@
+.DS_Store
+.build/
+relayforge-wordpress.zip
+*.log
+node_modules/
+vendor/

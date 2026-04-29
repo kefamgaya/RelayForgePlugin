@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RelayForge Card Templates Preview</title>
+  <style>
+    :root {
+      --rf-card-radius: 16px;
+      --rf-card-padding: 20px;
+      --rf-card-title-size: 18px;
+      --rf-card-image-ratio: 16 / 10;
+      --rf-card-image-position: center center;
+      --rf-theme-link: #1d6f5f;
+      --rf-theme-text: #111827;
+    }
+
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Segoe UI", Tahoma, sans-serif;
+      color: #111827;
+      background: linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+    }
+
+    .wrap { max-width: 1200px; margin: 0 auto; padding: 32px 16px 72px; }
+    h1 { margin: 0 0 8px; font-size: 2rem; }
+    .sub { margin: 0 0 24px; color: #4b5563; }
+    h2 { margin: 28px 0 14px; font-size: 1.2rem; }
+
+    .rfp-tours-grid {
+      display: grid;
+      gap: 18px;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      margin-bottom: 14px;
+    }
+
+    .rfp-card,
+    .rfp-user-card {
+      border: 1px solid #e5e7eb;
+      border-radius: var(--rf-card-radius);
+      background: #fff;
+      overflow: hidden;
+    }
+
+    .rfp-card__image,
+    .rfp-user-card__image {
+      width: 100%;
+      aspect-ratio: var(--rf-card-image-ratio);
+      object-fit: cover;
+      object-position: var(--rf-card-image-position);
+      display: block;
+    }
+
+    .rfp-card__body,
+    .rfp-user-card__body,
+    .rfp-user-card--minimal,
+    .rfp-user-card--compact {
+      padding: var(--rf-card-padding);
+    }
+
+    .rfp-card__title,
+    .rfp-user-card h3 {
+      margin: 0 0 8px;
+      font-size: var(--rf-card-title-size);
+      color: var(--rf-theme-text);
+    }
+
+    .rfp-card__meta,
+    .rfp-user-card__meta,
+    .rfp-user-card p {
+      margin: 0 0 10px;
+      color: #4b5563;
+      line-height: 1.45;
+    }
+
+    .rfp-card__price,
+    .rfp-user-card__price {
+      font-weight: 700;
+      margin: 0 0 10px;
+    }
+
+    .rfp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: var(--rf-theme-link);
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 14px;
+    }
+
+    .rfp-user-card__badge {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 999px;
+      background: #edf2ff;
+      color: #344ea0;
+      font-size: 12px;
+      margin-bottom: 8px;
+    }
+
+    .rfp-user-card__eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #6b7280;
+      font-size: 12px;
+      margin: 0 0 8px;
+    }
+
+    .rfp-user-card__chips { display: flex; gap: 8px; flex-wrap: wrap; margin: 0 0 10px; }
+    .rfp-user-card__chips span {
+      border: 1px solid #d1d5db;
+      border-radius: 999px;
+      padding: 4px 8px;
+      font-size: 12px;
+      color: #334155;
+    }
+
+    .rfp-user-card--overlay { position: relative; }
+    .rfp-user-card__overlay {
+      position: absolute;
+      inset: auto 0 0 0;
+      padding: 16px;
+      background: linear-gradient(to top, rgba(17, 24, 39, 0.86), rgba(17, 24, 39, 0));
+      color: #fff;
+    }
+    .rfp-user-card__overlay h3,
+    .rfp-user-card__overlay p { color: #fff; }
+
+    .rfp-user-card--luxury {
+      border-color: #dcc98a;
+      background: linear-gradient(145deg, #fffaf0, #ffffff);
+    }
+
+    code {
+      display: inline-block;
+      margin: 4px 0 0;
+      padding: 3px 8px;
+      border-radius: 7px;
+      background: #e2e8f0;
+      font-size: 12px;
+    }
+
+    @media (max-width: 980px) { .rfp-tours-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+    @media (max-width: 680px) { .rfp-tours-grid { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>RelayForge Card Templates Preview</h1>
+    <p class="sub">This is a static visual preview of how your plugin templates can look.</p>
+
+    <h2>Default</h2>
+    <div class="rfp-tours-grid">
+      <article class="rfp-card"><img class="rfp-card__image" src="https://picsum.photos/640/401" alt="Ocean Escape" /><div class="rfp-card__body"><h3 class="rfp-card__title">Ocean Escape</h3><p class="rfp-card__meta">Mombasa, Kenya</p><p class="rfp-card__price">249.00</p><a class="rfp-button" href="#">View tour</a></div></article>
+      <article class="rfp-card"><img class="rfp-card__image" src="https://picsum.photos/640/402" alt="Canyon Sunrise" /><div class="rfp-card__body"><h3 class="rfp-card__title">Canyon Sunrise</h3><p class="rfp-card__meta">Nakuru, Kenya</p><p class="rfp-card__price">199.00</p><a class="rfp-button" href="#">View tour</a></div></article>
+      <article class="rfp-card"><img class="rfp-card__image" src="https://picsum.photos/640/403" alt="Safari Highlights" /><div class="rfp-card__body"><h3 class="rfp-card__title">Safari Highlights</h3><p class="rfp-card__meta">Maasai Mara</p><p class="rfp-card__price">799.00</p><a class="rfp-button" href="#">View tour</a></div></article>
+    </div>
+
+    <h2>Minimal / Split / Overlay</h2>
+    <div class="rfp-tours-grid">
+      <article class="rfp-user-card rfp-user-card--minimal"><h3>Minimal Card</h3><p>Quick city tour</p><p class="rfp-user-card__price">149.00</p><a class="rfp-button" href="#">Book now</a></article>
+      <article class="rfp-user-card rfp-user-card--split"><img class="rfp-user-card__image" src="https://picsum.photos/640/404" alt="Split" /><div class="rfp-user-card__body"><h3>Split Card</h3><p>Image + content layout</p><a class="rfp-button" href="#">Explore</a></div></article>
+      <article class="rfp-user-card rfp-user-card--overlay"><img class="rfp-user-card__image" src="https://picsum.photos/640/405" alt="Overlay" /><div class="rfp-user-card__overlay"><h3>Overlay Card</h3><p>Great for hero-style cards</p><a class="rfp-button" href="#">Discover</a></div></article>
+    </div>
+
+    <h2>Magazine / Luxury / Adventure</h2>
+    <div class="rfp-tours-grid">
+      <article class="rfp-user-card rfp-user-card--magazine"><img class="rfp-user-card__image" src="https://picsum.photos/640/406" alt="Magazine" /><div class="rfp-user-card__body"><span class="rfp-user-card__badge">Top Rated</span><h3>Magazine Card</h3><p class="rfp-user-card__meta">3 days • Rating 4.8</p><a class="rfp-button" href="#">View</a></div></article>
+      <article class="rfp-user-card rfp-user-card--luxury"><div class="rfp-user-card__body"><p class="rfp-user-card__eyebrow">Private Experience</p><h3>Luxury Card</h3><p class="rfp-user-card__price">USD 1,299.00</p><a class="rfp-button" href="#">Reserve</a></div></article>
+      <article class="rfp-user-card rfp-user-card--adventure"><img class="rfp-user-card__image" src="https://picsum.photos/640/407" alt="Adventure" /><div class="rfp-user-card__body"><h3>Adventure Card</h3><p>Hiking + rafting combo</p><div class="rfp-user-card__chips"><span>5 days</span><span>Wildlife</span></div><a class="rfp-button" href="#">Start</a></div></article>
+    </div>
+
+    <h2>Compact / Feature + Custom HTML Example</h2>
+    <div class="rfp-tours-grid">
+      <article class="rfp-user-card rfp-user-card--compact"><h3>Compact Card</h3><p>Nairobi</p><a class="rfp-button" href="#">Open</a></article>
+      <article class="rfp-user-card rfp-user-card--feature"><img class="rfp-user-card__image" src="https://picsum.photos/640/408" alt="Feature" /><div class="rfp-user-card__body"><h3>Feature Card</h3><p>Destination with highlighted details</p><p class="rfp-user-card__meta">12 tours available</p><a class="rfp-button" href="#">See destination</a></div></article>
+      <article class="rfp-user-card custom-destination"><img class="rfp-user-card__image" src="https://picsum.photos/640/409" alt="Custom" /><div class="rfp-user-card__body"><h3>Custom HTML Card</h3><p>You control this markup completely.</p><a class="rfp-button" href="#">Use Template</a></div></article>
+    </div>
+
+    <p><strong>Custom template conditional example</strong></p>
+    <code>{{#if price}}&lt;p class="rfp-user-card__price"&gt;{{price}}&lt;/p&gt;{{/if}}</code>
+    <p><strong>API Base URL to use in plugin settings:</strong> <code>https://relay.forgelabspro.com</code></p>
+  </div>
+</body>
+</html>

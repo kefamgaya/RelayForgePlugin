@@ -1,0 +1,2296 @@
+.rfp {
+  box-sizing: border-box;
+}
+
+:root {
+  --rf-card-radius: 16px;
+  --rf-card-padding: 20px;
+  --rf-card-title-size: 18px;
+  --rf-card-image-ratio: 16 / 10;
+  --rf-card-image-position: center center;
+  --rfp-surface: var(--wp--preset--color--base, Canvas);
+  --rfp-surface-soft: var(--wp--preset--color--tertiary, color-mix(in srgb, CanvasText 6%, Canvas));
+  --rfp-text: var(--wp--preset--color--contrast, currentColor);
+  --rfp-muted: color-mix(in srgb, var(--rfp-text) 68%, transparent);
+  --rfp-border: color-mix(in srgb, var(--rfp-text) 18%, transparent);
+  --rfp-accent: var(--wp--preset--color--primary, currentColor);
+  --rfp-on-accent: var(--wp--preset--color--base, Canvas);
+  --rfp-hero-overlay: linear-gradient(
+    180deg,
+    color-mix(in srgb, var(--rfp-accent) 56%, transparent),
+    color-mix(in srgb, var(--rfp-accent) 78%, transparent)
+  );
+  --rf-theme-link: var(--rfp-accent);
+  --rf-theme-text: var(--rfp-text);
+}
+
+.rfp,
+.rfp-detail {
+  font-family: var(--rfp-font-family, inherit);
+}
+
+.rfp :is(h1, h2, h3, h4, .rfp-card__title),
+.rfp-detail :is(h1, h2, h3, h4) {
+  font-family: var(--rfp-font-title, var(--rfp-font-family, inherit));
+}
+
+.rfp .screen-reader-text,
+.rfp-detail .screen-reader-text {
+  border: 0;
+  clip: rect(1px, 1px, 1px, 1px);
+  clip-path: inset(50%);
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  padding: 0;
+  position: absolute;
+  width: 1px;
+  word-wrap: normal !important;
+}
+
+.rfp-tours-grid {
+  display: grid;
+  gap: 24px;
+}
+
+.rfp-tours-grid.columns-2 {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.rfp-tours-grid.columns-3,
+.rfp-tours-grid.columns-4 {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rfp-card,
+.rfp-review,
+.rfp-form-embed__inner {
+  border: 1px solid var(--rfp-border);
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-surface);
+  overflow: hidden;
+}
+
+.rfp-card:has(a[href*="/tours/"], a[href*="/destinations/"]),
+.rfp-user-card:has(a[href*="/tours/"], a[href*="/destinations/"]) {
+  cursor: pointer;
+}
+
+.rfp-card__image {
+  width: 100%;
+  aspect-ratio: var(--rf-card-image-ratio);
+  object-fit: cover;
+  object-position: var(--rf-card-image-position);
+  display: block;
+}
+
+.rfp-card__body,
+.rfp-review,
+.rfp-form-embed__inner {
+  padding: var(--rf-card-padding);
+}
+
+.rfp-card__title {
+  margin: 0 0 8px;
+  font-size: var(--rf-card-title-size);
+  color: var(--rf-theme-text);
+}
+
+.rfp-card__meta,
+.rfp-notice {
+  color: var(--rfp-muted);
+}
+
+.rfp-card__price {
+  font-weight: 700;
+  margin: 12px 0;
+}
+
+.rfp-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px;
+  border-radius: 999px;
+  background: var(--rf-theme-link);
+  color: var(--rfp-on-accent);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.rfp-user-card {
+  border: 1px solid var(--rfp-border);
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-surface);
+  overflow: hidden;
+}
+
+.rfp-user-card__image {
+  width: 100%;
+  aspect-ratio: var(--rf-card-image-ratio);
+  object-fit: cover;
+  object-position: var(--rf-card-image-position);
+  display: block;
+}
+
+.rfp-user-card__body {
+  padding: var(--rf-card-padding);
+}
+
+.rfp-user-card--default h3 {
+  margin: 0 0 6px;
+  font-size: var(--rf-card-title-size);
+}
+
+.rfp-user-card--default p {
+  margin: 0 0 10px;
+  color: var(--rfp-muted);
+  font-size: 14px;
+}
+
+.rfp-user-card--minimal {
+  padding: 20px;
+}
+
+.rfp-user-card--minimal h3,
+.rfp-user-card--split h3 {
+  margin: 0 0 8px;
+}
+
+.rfp-user-card--minimal p,
+.rfp-user-card--split p {
+  margin: 0 0 10px;
+  color: var(--rfp-muted);
+}
+
+.rfp-user-card__price {
+  font-weight: 700;
+  color: var(--rfp-text);
+}
+
+.rfp-user-card__meta {
+  color: var(--rfp-muted);
+  margin: 0 0 10px;
+}
+
+.rfp-user-card__eyebrow {
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 12px;
+  color: var(--rfp-muted);
+  margin: 0 0 8px;
+}
+
+.rfp-user-card__badge {
+  display: inline-block;
+  padding: 4px 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--rfp-accent) 12%, var(--rfp-surface));
+  color: var(--rfp-accent);
+  font-size: 12px;
+  margin-bottom: 8px;
+}
+
+.rfp-user-card__chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 0 0 10px;
+}
+
+.rfp-user-card__chips span {
+  font-size: 12px;
+  padding: 4px 8px;
+  border-radius: 999px;
+  border: 1px solid var(--rfp-border);
+  color: var(--rfp-text);
+}
+
+.rfp-user-card--overlay {
+  position: relative;
+  min-height: 360px;
+  display: flex;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--rfp-accent) 28%, var(--rfp-text)), color-mix(in srgb, var(--rfp-text) 82%, var(--rfp-surface)));
+}
+
+.rfp-user-card--overlay .rfp-user-card__image {
+  position: absolute;
+  inset: 0;
+  min-height: 360px;
+  height: 100%;
+  aspect-ratio: auto;
+}
+
+.rfp-user-card__overlay {
+  position: absolute;
+  inset: auto 0 0 0;
+  padding: 26px;
+  background: linear-gradient(to top, color-mix(in srgb, var(--rfp-text) 82%, transparent), transparent);
+  color: var(--rfp-surface);
+}
+
+.rfp-user-card--overlay h3 {
+  font-size: clamp(1.35rem, 2.4vw, 2rem);
+  line-height: 1.08;
+}
+
+.rfp-user-card--overlay h3,
+.rfp-user-card--overlay p {
+  color: var(--rfp-surface);
+}
+
+.rfp-user-card--overlay .rfp-user-card__price {
+  color: var(--rfp-surface);
+  font-size: 1rem;
+  margin: 8px 0 12px;
+}
+
+.rfp-user-card--luxury {
+  border-color: color-mix(in srgb, var(--rfp-accent) 38%, var(--rfp-border));
+  background: var(--rfp-surface);
+}
+
+.rfp-user-card--feature .rfp-user-card__body {
+  border-top: 1px solid var(--rfp-border);
+}
+
+.rfp-user-card--compact {
+  padding: 14px;
+}
+
+.rfp-button:focus-visible,
+.rfp-card a:focus-visible,
+.rfp-user-card a:focus-visible {
+  outline: 3px solid var(--rfp-accent);
+  outline-offset: 2px;
+}
+
+.rfp-detail {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: min(1320px, 100%);
+  margin: 0 auto;
+  padding: 48px 16px 80px;
+}
+
+.rfp-tour-detail {
+  max-width: min(1380px, 100%);
+  color: var(--rfp-text);
+}
+
+.rfp-tour-hero {
+  min-height: 62vh;
+  border-radius: 34px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: var(--rfp-on-accent);
+  background-image: var(--rfp-hero-overlay), linear-gradient(120deg, var(--rfp-accent), color-mix(in srgb, var(--rfp-accent) 72%, var(--rfp-text)));
+  background-size: cover;
+  background-position: center;
+  padding: 40px 18px;
+}
+
+.rfp-tour-hero__inner {
+  max-width: 900px;
+}
+
+.rfp-tour-hero .rfp-eyebrow {
+  color: var(--rfp-on-accent);
+}
+
+.rfp-tour-hero h1 {
+  margin: 0;
+  font-size: clamp(2.7rem, 7vw, 5.4rem);
+  line-height: 0.95;
+  letter-spacing: -0.055em;
+}
+
+.rfp-tour-hero__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.rfp-tour-hero__meta span {
+  border: 1px solid color-mix(in srgb, var(--rfp-on-accent) 40%, transparent);
+  border-radius: 999px;
+  padding: 8px 12px;
+  background: color-mix(in srgb, var(--rfp-on-accent) 14%, transparent);
+  font-weight: 700;
+}
+
+.rfp-tour-tabs {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  flex-wrap: wrap;
+  margin: 22px 0 30px;
+  background: color-mix(in srgb, var(--rfp-surface) 94%, transparent);
+  border-bottom: 1px solid var(--rfp-border);
+}
+
+.rfp-tour-tabs a {
+  min-height: 48px;
+  padding: 14px 18px 12px;
+  border-bottom: 2px solid transparent;
+  color: var(--rfp-muted);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.rfp-tour-tabs a:hover,
+.rfp-tour-tabs a:focus {
+  border-bottom-color: var(--rfp-accent);
+  color: var(--rfp-accent);
+}
+
+.rfp-tour-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+  gap: 40px;
+  align-items: start;
+}
+
+.rfp-tour-main {
+  min-width: 0;
+}
+
+.rfp-tour-panel {
+  scroll-margin-top: 78px;
+  padding: clamp(22px, 3vw, 34px);
+  border-radius: 28px;
+  background: var(--rfp-surface);
+  margin-bottom: 18px;
+}
+
+.rfp-tour-panel h2 {
+  margin: 0 0 22px;
+  color: var(--rfp-text);
+  font-size: 1.55rem;
+}
+
+.rfp-tour-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rfp-tour-gallery img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  border-radius: 20px;
+  background: var(--rfp-surface-soft);
+  cursor: zoom-in;
+}
+
+.rfp-tour-gallery img:focus-visible {
+  outline: 3px solid var(--rfp-accent);
+  outline-offset: 3px;
+}
+
+body.rfp-lightbox-open {
+  overflow: hidden;
+}
+
+.rfp-lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 999999;
+  display: grid;
+  grid-template-columns: minmax(48px, 88px) minmax(0, 1fr) minmax(48px, 88px);
+  align-items: center;
+  gap: 12px;
+  padding: clamp(16px, 4vw, 44px);
+  background: color-mix(in srgb, CanvasText 82%, transparent);
+  backdrop-filter: blur(14px);
+  box-sizing: border-box;
+}
+
+.rfp-lightbox[hidden] {
+  display: none !important;
+}
+
+.rfp-lightbox__figure {
+  min-width: 0;
+  margin: 0;
+  display: grid;
+  justify-items: center;
+  gap: 14px;
+}
+
+.rfp-lightbox__image {
+  display: block;
+  max-width: 100%;
+  max-height: min(82vh, 920px);
+  width: auto;
+  height: auto;
+  border-radius: 22px;
+  object-fit: contain;
+  box-shadow: 0 24px 80px color-mix(in srgb, CanvasText 38%, transparent);
+  background: Canvas;
+}
+
+.rfp-lightbox__caption {
+  min-height: 1.4em;
+  color: Canvas;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.rfp-lightbox__close,
+.rfp-lightbox__nav {
+  border: 1px solid color-mix(in srgb, Canvas 34%, transparent);
+  background: color-mix(in srgb, Canvas 16%, transparent);
+  color: Canvas;
+  cursor: pointer;
+  font: inherit;
+  transition: transform 0.18s ease, background 0.18s ease;
+}
+
+.rfp-lightbox__close:hover,
+.rfp-lightbox__nav:hover,
+.rfp-lightbox__close:focus-visible,
+.rfp-lightbox__nav:focus-visible {
+  background: color-mix(in srgb, Canvas 26%, transparent);
+  transform: scale(1.04);
+  outline: none;
+}
+
+.rfp-lightbox__close {
+  position: absolute;
+  top: clamp(12px, 3vw, 28px);
+  right: clamp(12px, 3vw, 28px);
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.rfp-lightbox__nav {
+  width: clamp(46px, 7vw, 66px);
+  height: clamp(46px, 7vw, 66px);
+  border-radius: 999px;
+  font-size: clamp(36px, 7vw, 56px);
+  line-height: 1;
+  justify-self: center;
+}
+
+@media (max-width: 720px) {
+  .rfp-lightbox {
+    grid-template-columns: 1fr;
+    padding: 64px 12px 22px;
+  }
+
+  .rfp-lightbox__figure {
+    grid-row: 1;
+  }
+
+  .rfp-lightbox__image {
+    max-height: 72vh;
+    border-radius: 16px;
+  }
+
+  .rfp-lightbox__nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .rfp-lightbox__nav:hover,
+  .rfp-lightbox__nav:focus-visible {
+    transform: translateY(-50%) scale(1.04);
+  }
+
+  .rfp-lightbox__nav--prev {
+    left: 12px;
+  }
+
+  .rfp-lightbox__nav--next {
+    right: 12px;
+  }
+}
+
+.rfp-tour-facts {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.rfp-tour-facts div {
+  padding: 16px 18px;
+  border-radius: 20px;
+  background: var(--rfp-surface-soft);
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 6px 14px;
+  align-items: center;
+}
+
+.rfp-icon {
+  display: inline-block;
+  width: 1.15em;
+  height: 1.15em;
+  flex: 0 0 auto;
+}
+
+.rfp-fact-icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rfp-accent);
+  background: color-mix(in srgb, var(--rfp-accent) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--rfp-accent) 24%, transparent);
+  grid-row: span 2;
+}
+
+.rfp-fact-icon .rfp-icon {
+  width: 20px;
+  height: 20px;
+}
+
+.rfp-icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  line-height: 1.18;
+}
+
+.rfp-icon-heading .rfp-icon {
+  width: 1em;
+  height: 1em;
+  color: var(--rfp-accent);
+}
+
+.rfp-tour-facts .rfp-fact-label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: var(--rfp-muted);
+  font-weight: 800;
+}
+
+.rfp-tour-facts strong {
+  color: var(--rfp-text);
+  font-size: 1.02rem;
+  line-height: 1.28;
+}
+
+.rfp-tour-copy {
+  margin-top: 34px;
+}
+
+.rfp-tour-copy h3 {
+  color: var(--rfp-text);
+  margin: 0 0 14px;
+}
+
+.rfp-tour-copy h3,
+.rfp-tour-list-section h3,
+.rfp-tour-included-grid h3 {
+  font-size: clamp(1.35rem, 2vw, 1.85rem);
+  letter-spacing: -0.02em;
+}
+
+.rfp-tour-copy p {
+  color: var(--rfp-muted);
+  line-height: 1.75;
+  margin: 0;
+}
+
+.rfp-itinerary-list,
+.rfp-faq-list {
+  display: grid;
+  gap: 12px;
+}
+
+.rfp-itinerary-item,
+.rfp-faq-item {
+  border: 1px solid var(--rfp-border);
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-surface-soft);
+  overflow: hidden;
+}
+
+.rfp-itinerary-item summary,
+.rfp-faq-item summary {
+  cursor: pointer;
+  padding: 15px 16px;
+  font-weight: 700;
+  color: var(--rfp-text);
+}
+
+.rfp-itinerary-item p,
+.rfp-faq-item p {
+  margin: 0;
+  padding: 0 16px 16px;
+  color: var(--rfp-muted);
+  line-height: 1.75;
+}
+
+.rfp-tour-list-section,
+.rfp-tour-included-grid {
+  margin-top: 38px;
+}
+
+.rfp-tour-included-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(28px, 5vw, 56px);
+}
+
+.rfp-check-list,
+.rfp-plain-list {
+  display: grid;
+  gap: 16px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  color: var(--rfp-muted);
+}
+
+.rfp-tour-list-section .rfp-icon-heading,
+.rfp-tour-included-grid .rfp-icon-heading {
+  margin-bottom: 22px;
+}
+
+.rfp-check-list li,
+.rfp-plain-list li {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.rfp-check-list li::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  margin-top: 0.45em;
+  border-radius: 999px;
+  background: var(--rfp-accent);
+  flex: 0 0 auto;
+}
+
+.rfp-plain-list li::before {
+  content: "";
+  width: 0.65em;
+  height: 0.65em;
+  margin-top: 0.45em;
+  border-radius: 999px;
+  border: 1px solid var(--rfp-border);
+  flex: 0 0 auto;
+}
+
+.rfp-tour-booking {
+  position: sticky;
+  top: 96px;
+}
+
+.rfp-tour-booking__card {
+  padding: 22px;
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-surface);
+  border: 1px solid var(--rfp-border);
+  overflow: visible;
+  --rfp-bms-soft: color-mix(in srgb, var(--rfp-text) 52%, Canvas 48%);
+  --rfp-bms-mid: color-mix(in srgb, var(--rfp-text) 74%, Canvas 26%);
+  --rfp-bms-strong: color-mix(in srgb, var(--rfp-text) 88%, Canvas 12%);
+}
+
+.rfp-tour-booking__card h2 {
+  margin: 0 0 8px;
+  color: var(--rfp-bms-strong, var(--rfp-text));
+}
+
+.rfp-tour-booking__card p {
+  color: var(--rfp-muted);
+  line-height: 1.65;
+}
+
+.rfp-tour-booking__price {
+  font-size: 1.15rem;
+  color: var(--rfp-accent) !important;
+  font-weight: 800;
+}
+
+/* Inquiry UI follows theme fonts; RelayForge card uploads/presets apply only inside .rfp-typography-cards. */
+.rfp-tour-booking,
+.rfp-booking-dialog,
+.rfp-booking-dialog__inner,
+.rfp-mobile-bar,
+.rfp-booking-date-dialog {
+  font-family: inherit;
+}
+
+.rfp-booking-form {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.rfp-tour-booking__card .rfp-booking-form.rfp-bms,
+.rfp-booking-dialog .rfp-booking-form.rfp-bms {
+  min-width: 0;
+  max-width: 100%;
+  --rfp-bms-soft: color-mix(in srgb, var(--rfp-text) 52%, Canvas 48%);
+  --rfp-bms-mid: color-mix(in srgb, var(--rfp-text) 74%, Canvas 26%);
+  --rfp-bms-strong: color-mix(in srgb, var(--rfp-text) 88%, Canvas 12%);
+}
+
+.rfp-booking-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--rfp-text);
+  font-weight: 700;
+}
+
+.rfp-booking-form input,
+.rfp-booking-form textarea {
+  width: 100%;
+  border: 1px solid var(--rfp-border);
+  border-radius: 10px;
+  background: var(--rfp-surface);
+  color: var(--rfp-text);
+  padding: 10px 11px;
+  font: inherit;
+}
+
+.rfp-packages-hero {
+  padding: 20px 0 36px;
+  max-width: 720px;
+}
+
+.rfp-packages-hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4.6rem);
+  line-height: 0.98;
+  color: var(--rfp-text);
+}
+
+.rfp-packages-hero p:not(.rfp-eyebrow) {
+  color: var(--rfp-muted);
+  line-height: 1.8;
+}
+
+.rfp-packages-browser {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  gap: 28px;
+  align-items: start;
+}
+
+.rfp-packages-filters {
+  position: sticky;
+  top: 24px;
+  display: grid;
+  gap: 16px;
+  padding: 20px;
+  border: 1px solid var(--rfp-border);
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-surface);
+}
+
+.rfp-packages-filters label {
+  display: grid;
+  gap: 7px;
+  font-weight: 700;
+  color: var(--rfp-text);
+}
+
+.rfp-packages-filters input,
+.rfp-packages-filters select {
+  width: 100%;
+  border: 1px solid var(--rfp-border);
+  border-radius: 10px;
+  padding: 10px 11px;
+  background: var(--rfp-surface);
+  color: var(--rfp-text);
+  font: inherit;
+}
+
+.rfp-packages-filters button,
+.rfp-button--secondary {
+  border: 1px solid var(--rfp-border);
+  background: var(--rfp-surface);
+  color: var(--rfp-text);
+}
+
+.rfp-packages-filters button {
+  border-radius: 999px;
+  padding: 10px 14px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.rfp-packages-count {
+  margin-bottom: 14px;
+  color: var(--rfp-muted);
+  font-weight: 700;
+}
+
+.rfp-package-card__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.rfp-package-browser-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  min-width: 0;
+  height: 100%;
+}
+
+.rfp-package-browser-card > .rfp-user-card,
+.rfp-package-browser-card > .rfp-card {
+  flex: 1 1 auto;
+  min-height: 440px;
+}
+
+.rfp-package-browser-card > .rfp-package-card__actions {
+  margin-top: 14px;
+}
+
+.rfp-packages-grid {
+  align-items: stretch;
+  gap: 34px;
+}
+
+.rfp-packages-grid .rfp-user-card--overlay,
+.rfp-packages-grid .rfp-user-card--overlay .rfp-user-card__image {
+  min-height: 440px;
+}
+
+.rfp-packages-pagination {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 28px;
+  color: var(--rfp-muted);
+  font-weight: 700;
+}
+
+.rfp-packages-pagination span {
+  padding: 8px 4px;
+}
+
+.rfp-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1.1fr) minmax(280px, 0.9fr);
+  gap: 32px;
+  align-items: center;
+}
+
+.rfp-hero h1 {
+  margin: 0;
+  font-size: clamp(2.25rem, 5vw, 4.5rem);
+  line-height: 1;
+}
+
+.rfp-eyebrow {
+  margin-bottom: 12px;
+  color: var(--rfp-accent);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.8rem;
+}
+
+.rfp-lead {
+  font-size: 1.1rem;
+  color: var(--rfp-muted);
+  line-height: 1.8;
+}
+
+.rfp-hero__image {
+  width: 100%;
+  border-radius: 24px;
+  border: 1px solid var(--rfp-border);
+  object-fit: cover;
+}
+
+.rfp-section {
+  margin-top: 56px;
+}
+
+.rfp-section h2 {
+  margin-bottom: 16px;
+}
+
+.rfp-availability {
+  display: grid;
+  gap: 16px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.rfp-availability__card {
+  border: 1px solid var(--rfp-border);
+  border-radius: 16px;
+  background: var(--rfp-surface);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rfp-review__header {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.rfp-native-form {
+  display: grid;
+  gap: 16px;
+  text-align: left;
+}
+
+.rfp-form-embed {
+  --rfp-form-primary: var(--rfp-accent);
+  --rfp-form-bg: var(--rfp-surface-soft);
+  --rfp-form-surface: var(--rfp-surface);
+}
+
+.rfp-form-embed__inner {
+  background: var(--rfp-form-surface);
+}
+
+.rfp-form-embed__description {
+  color: var(--rfp-muted);
+  line-height: 1.65;
+  margin: 0 0 16px;
+}
+
+.rfp-dynamic-form .rfp-button {
+  background: var(--rfp-form-primary);
+}
+
+.rfp-form-field,
+.rfp-native-form label {
+  display: grid;
+  gap: 6px;
+  color: var(--rfp-text);
+  font-size: 0.95rem;
+}
+
+.rfp-form-label {
+  color: var(--rfp-muted);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rfp-native-form input,
+.rfp-native-form textarea,
+.rfp-native-form select {
+  width: 100%;
+  border: 1px solid var(--rfp-border);
+  border-radius: 12px;
+  background: var(--rfp-form-bg);
+  color: var(--rfp-text);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.rfp-choice-list {
+  display: grid;
+  gap: 8px;
+}
+
+.rfp-choice-list label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--rfp-text);
+}
+
+.rfp-choice-list input {
+  width: auto;
+}
+
+.rfp-form-iframe {
+  display: block;
+  width: 100%;
+  border: 0;
+  border-radius: var(--rf-card-radius);
+  background: var(--rfp-form-bg);
+}
+
+.rfp-form-progress {
+  display: grid;
+  gap: 8px;
+  color: var(--rfp-muted);
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.rfp-form-progress__track {
+  height: 8px;
+  border-radius: 999px;
+  background: color-mix(in srgb, var(--rfp-text) 12%, transparent);
+  overflow: hidden;
+}
+
+.rfp-form-progress__track span {
+  display: block;
+  height: 100%;
+  border-radius: inherit;
+  background: var(--rfp-form-primary);
+  transition: width 0.2s ease;
+}
+
+.rfp-form-nav {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rfp-form-nav .rfp-button {
+  min-width: 116px;
+}
+
+.rfp-forms-directory {
+  display: grid;
+  gap: 12px;
+}
+
+.rfp-form-list-card {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 16px;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--rfp-border);
+}
+
+.rfp-form-list-card h3 {
+  margin: 0 0 4px;
+}
+
+.rfp-form-list-card p {
+  margin: 0 0 6px;
+  color: var(--rfp-muted);
+}
+
+.rfp-form-list-card small {
+  color: var(--rfp-muted);
+  font-weight: 700;
+}
+
+.rfp-form-list-card code {
+  white-space: nowrap;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: var(--rfp-surface-soft);
+}
+
+.rfp-success {
+  color: var(--rfp-accent);
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .rfp-hero,
+  .rfp-availability,
+  .rfp-tour-layout,
+  .rfp-tour-facts,
+  .rfp-tour-included-grid,
+  .rfp-packages-browser {
+    grid-template-columns: 1fr;
+  }
+
+  .rfp-tour-booking {
+    position: static;
+  }
+
+  .rfp-packages-filters {
+    position: static;
+  }
+
+  .rfp-tour-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .rfp-tours-grid.columns-2,
+  .rfp-tours-grid.columns-3,
+  .rfp-tours-grid.columns-4 {
+    grid-template-columns: 1fr;
+  }
+
+  .rfp-user-card--overlay,
+  .rfp-user-card--overlay .rfp-user-card__image {
+    min-height: 320px;
+  }
+}
+
+/* ── Tour page: featured badge ── */
+.rfp-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  margin-bottom: 10px;
+}
+
+.rfp-badge--featured {
+  background: color-mix(in srgb, var(--rfp-accent) 18%, transparent);
+  color: var(--rfp-accent);
+  border: 1px solid color-mix(in srgb, var(--rfp-accent) 35%, transparent);
+}
+
+/* ── Tour page: rich itinerary ── */
+.rfp-itinerary-timed {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.rfp-itinerary-timed li {
+  display: grid;
+  grid-template-columns: 64px 1fr;
+  gap: 4px 10px;
+  align-items: baseline;
+  font-size: 14px;
+}
+
+.rfp-itinerary-time {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--rfp-muted);
+  grid-row: 1 / 3;
+  padding-top: 2px;
+}
+
+.rfp-itinerary-label {
+  font-weight: 600;
+}
+
+.rfp-itinerary-desc {
+  font-size: 13px;
+  color: var(--rfp-muted);
+  grid-column: 2;
+}
+
+.rfp-itinerary-activities {
+  margin-top: 10px;
+}
+
+.rfp-itinerary-meals,
+.rfp-itinerary-accomm {
+  margin: 10px 0 0;
+  font-size: 13px;
+  color: var(--rfp-muted);
+}
+
+.rfp-itinerary-meals span,
+.rfp-itinerary-accomm span {
+  font-weight: 600;
+  color: var(--rfp-text);
+}
+
+/* ── Tour page: group pricing ── */
+.rfp-tour-booking__price-sub {
+  font-size: 13px;
+  color: var(--rfp-muted);
+  margin: -8px 0 12px;
+}
+
+/* ── rfp-page: full-page layout — no sidebar, no breadcrumbs ── */
+
+/*
+ * Step 1: Collapse the grid/flex container that themes use for the sidebar layout.
+ * Covers Twenty-* (flex), Astra (.ast-container flex), OceanWP (.site-inner flex),
+ * GeneratePress (.grid-container grid), Kadence (.content-wrap grid), Divi, Blocksy.
+ */
+body.rfp-page .site-content,
+body.rfp-page #content,
+body.rfp-page #site-content,
+body.rfp-page .content-wrap,
+body.rfp-page .content-wrapper,
+body.rfp-page .ast-container,
+body.rfp-page .site-inner,
+body.rfp-page .grid-container,
+body.rfp-page .inside-content-wrap,
+body.rfp-page .blocksy-content-wrap,
+body.rfp-page .page-layout,
+body.rfp-page .fl-page-content {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-areas: none !important;
+}
+
+/* Themes cap #content / inner .wrap — narrow column + margin:0 on #primary ⇒ huge empty band on the right */
+body.rfp-page #content,
+body.rfp-page .site-content,
+body.rfp-page .site-inner,
+body.rfp-page .ast-container {
+  max-width: none !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+}
+
+body.rfp-page #content .wrap,
+body.rfp-page .site-inner > .wrap,
+body.rfp-page #page .site-content .wrap {
+  max-width: none !important;
+  width: 100% !important;
+  box-sizing: border-box;
+}
+
+body.rfp-page .elementor-section.elementor-section-boxed > .elementor-container {
+  max-width: none !important;
+}
+
+/* FSE root: keep a vertical flex stack so header / main / footer stay full-width. */
+body.rfp-page .wp-site-blocks {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: stretch !important;
+  width: 100% !important;
+  max-width: none !important;
+  grid-template-columns: none !important;
+  grid-template-areas: none !important;
+}
+
+/*
+ * Step 2: Make the primary content column genuinely full-width.
+ * float: none covers float-based layouts; flex/grid overrides cover modern themes.
+ */
+body.rfp-page #primary,
+body.rfp-page .content-area,
+body.rfp-page main.site-main,
+body.rfp-page .entry-content-wrap,
+body.rfp-page .ast-article-single {
+  align-self: stretch !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  float: none !important;
+  flex: 1 1 100% !important;
+  padding: 0 !important;
+  margin: 0 !important;
+}
+
+/* Nested article caps (narrow single templates). Do not blanket-target .wp-block-group — breaks FSE headers. */
+body.rfp-page article.post:not([class*="rfp"]),
+body.rfp-page article.page:not([class*="rfp"]),
+body.rfp-page .hentry:not([class*="rfp"]) {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  overflow: visible !important;
+}
+
+/* FSE / block themes: template shell often caps .wp-site-blocks or main below max-width. */
+body.rfp-page .wp-site-blocks > main,
+body.rfp-page #page .wp-site-blocks {
+  max-width: none !important;
+}
+
+body.rfp-page #primary > .container,
+body.rfp-page #primary > .containers,
+body.rfp-page .site-main > .container,
+body.rfp-page #content > .container,
+body.rfp-page .content-area > .container {
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+  overflow: visible !important;
+}
+
+/* Grid / flex themes: force the main column to span the full row (fixes “half width” main). */
+body.rfp-page #main,
+body.rfp-page main#primary,
+body.rfp-page main.site-main,
+body.rfp-page #primary.content-area {
+  grid-column: 1 / -1 !important;
+}
+
+/* Outer theme shells that still cap page width (boxed layouts). */
+body.rfp-page #page,
+body.rfp-page #wrapper,
+body.rfp-page .site:not([class*="rfp"]) {
+  max-width: none !important;
+}
+
+/* Post/page content wrappers inside themes & block editor. */
+body.rfp-page .entry-content,
+body.rfp-page .wp-block-post-content,
+body.rfp-page article .entry-content,
+body.rfp-page .post-inner,
+body.rfp-page .entry-inner,
+body.rfp-page .elementor-widget-theme-post-content .elementor-widget-container {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+/* Step 3: Hide sidebar elements — space collapses because container is now block. */
+body.rfp-page #secondary,
+body.rfp-page .secondary,
+body.rfp-page .widget-area,
+body.rfp-page .sidebar,
+body.rfp-page .sidebar-container,
+body.rfp-page .ast-right-sidebar,
+body.rfp-page .ast-left-sidebar,
+body.rfp-page .generate-sidebar,
+body.rfp-page .kt-sidebar,
+body.rfp-page .oceanwp-sidebar,
+body.rfp-page [id^="sidebar"],
+body.rfp-page [class*="-sidebar"]:not([class*="rfp"]) {
+  display: none !important;
+}
+
+/* Step 4: Hide breadcrumbs — theme built-ins + Yoast, Rank Math, NavXT, WooCommerce. */
+body.rfp-page .breadcrumb,
+body.rfp-page .breadcrumbs,
+body.rfp-page .woocommerce-breadcrumb,
+body.rfp-page nav[aria-label*="readcrumb"],
+body.rfp-page [class*="breadcrumb"]:not([class*="rfp"]),
+body.rfp-page [id*="breadcrumb"] {
+  display: none !important;
+}
+
+/* Step 5: Hide theme page-title headers injected above content. */
+body.rfp-page .page-header:not(.rfp-tour-hero),
+body.rfp-page .entry-header:not([class*="rfp"]),
+body.rfp-page .page-title:not([class*="rfp"]) {
+  display: none !important;
+}
+
+/*
+ * Routed tour / destination / packages: fill the content column edge-to-edge.
+ * Prefer stretching parents (above) instead of vw + calc() — that combo breaks when a
+ * theme wrapper is off-center or has transforms, producing a lone empty band on one side.
+ */
+body.rfp-page {
+  overflow-x: hidden;
+}
+
+body.rfp-page main.rfp-detail {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-top: clamp(28px, 5vw, 56px);
+  padding-bottom: clamp(56px, 8vw, 96px);
+  padding-left: 0;
+  padding-right: 0;
+}
+
+body.rfp-page main.rfp-detail.rfp-tour-detail,
+body.rfp-page main.rfp-detail.rfp-packages-page {
+  max-width: none !important;
+}
+
+body.rfp-page .rfp-tour-tabs {
+  padding-left: clamp(16px, 5vw, 56px);
+  padding-right: clamp(16px, 5vw, 56px);
+}
+
+body.rfp-page .rfp-tour-layout {
+  padding-left: clamp(16px, 5vw, 56px);
+  padding-right: clamp(16px, 5vw, 56px);
+}
+
+body.rfp-page .rfp-tour-hero {
+  width: 100%;
+  border-radius: 0 0 clamp(24px, 4vw, 40px) clamp(24px, 4vw, 40px);
+  padding-left: clamp(16px, 5vw, 56px);
+  padding-right: clamp(16px, 5vw, 56px);
+}
+
+body.rfp-page .rfp-packages-hero,
+body.rfp-page .rfp-packages-browser {
+  box-sizing: border-box;
+  max-width: none;
+  width: 100%;
+}
+
+body.rfp-page .rfp-packages-hero {
+  padding-left: clamp(16px, 5vw, 56px);
+  padding-right: clamp(16px, 5vw, 56px);
+}
+
+body.rfp-page .rfp-packages-browser {
+  padding-left: clamp(16px, 5vw, 56px);
+  padding-right: clamp(16px, 5vw, 56px);
+}
+
+/* Strong full-bleed mode for RelayForge routed pages while preserving theme header/footer. */
+body.rfp-full-bleed-page {
+  overflow-x: hidden;
+}
+
+body.rfp-full-bleed-page :is(
+  #page,
+  #wrapper,
+  #content,
+  #site-content,
+  .site,
+  .site-content,
+  .site-inner,
+  .content-area,
+  .content-wrap,
+  .content-wrapper,
+  .entry-content,
+  .entry-content-wrap,
+  .wp-block-post-content,
+  .wp-site-blocks > main,
+  main.site-main,
+  main#primary,
+  #primary,
+  #main,
+  .ast-container,
+  .grid-container,
+  .inside-article,
+  .inside-content-wrap,
+  .blocksy-content-wrap,
+  .fl-page-content
+) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+}
+
+body.rfp-full-bleed-page :is(
+  #primary > .container,
+  #primary > .containers,
+  #content > .container,
+  #content > .containers,
+  main.site-main > .container,
+  main.site-main > .containers,
+  .content-area > .container,
+  .content-area > .containers,
+  .entry-content > .container,
+  .entry-content > .containers
+) {
+  box-sizing: border-box !important;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.rfp-full-bleed-page :is(
+  .site-content,
+  .content-wrap,
+  .content-wrapper,
+  .ast-container,
+  .grid-container,
+  .wp-site-blocks > main,
+  #primary,
+  main.site-main,
+  main#primary
+) {
+  display: block !important;
+  grid-template-columns: none !important;
+  grid-template-areas: none !important;
+  grid-column: 1 / -1 !important;
+  flex-basis: 100% !important;
+}
+
+body.rfp-full-bleed-page main.rfp-detail {
+  position: relative;
+  left: auto;
+  right: auto;
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+  margin-left: 0 !important;
+  margin-right: 0 !important;
+  padding-left: 0 !important;
+  padding-right: 0 !important;
+}
+
+body.rfp-full-bleed-page :is(.rfp-tour-tabs, .rfp-tour-layout, .rfp-packages-hero, .rfp-packages-browser) {
+  box-sizing: border-box;
+  width: 100% !important;
+  max-width: none !important;
+}
+
+body.rfp-full-bleed-page .rfp-tour-hero {
+  width: 100% !important;
+  max-width: none !important;
+}
+
+/* ── Booking form: multi-step ── */
+.rfp-bms__dots {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.rfp-bms__dot {
+  height: 4px;
+  flex: 1;
+  border-radius: 999px;
+  background: var(--rfp-border);
+  transition: background 0.25s;
+}
+
+.rfp-bms__dot--done {
+  background: var(--rfp-accent);
+}
+
+.rfp-bms__label {
+  font-size: 0.68rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.14em !important;
+  color: var(--rfp-muted) !important;
+  margin: 0 0 18px !important;
+}
+
+.rfp-bms__hint {
+  font-size: 13px;
+  margin: 0 0 12px;
+  line-height: 1.6;
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__label {
+  color: var(--rfp-bms-soft) !important;
+}
+
+.rfp-booking-form.rfp-bms > .rfp-bms-steps .rfp-bms__hint {
+  color: var(--rfp-bms-soft);
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__step--single > .rfp-bms__hint,
+.rfp-booking-form.rfp-bms .rfp-bms__step--details > .rfp-bms__hint {
+  color: var(--rfp-bms-strong) !important;
+}
+
+.rfp-tour-booking__card > .rfp-eyebrow {
+  color: var(--rfp-bms-soft, var(--rfp-muted));
+}
+
+
+
+.rfp-bms__review dd[data-rfp-rv='contact'] {
+  white-space: pre-line;
+  text-align: right;
+}
+
+.rfp-bms__step--single > .rfp-bms__hint,
+.rfp-bms__step--details > .rfp-bms__hint {
+  margin-bottom: 16px;
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--rfp-bms-strong, var(--rfp-text));
+  line-height: 1.45;
+  font-family: var(--rfp-font-title, var(--rfp-font-family, inherit));
+}
+
+.rfp-bms__step--details label.rfp-bms__field {
+  gap: 6px;
+}
+
+.rfp-bms__date-shell {
+  position: relative;
+  width: 100%;
+  min-width: 0;
+}
+
+.rfp-bms__date-row {
+  display: block;
+}
+
+.rfp-bms__date-trigger {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 2px;
+  width: auto;
+  max-width: 100%;
+  padding: 6px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--rfp-border);
+  background: var(--rfp-surface);
+  color: var(--rfp-text);
+  font-size: 0.8125rem;
+  line-height: 1.35;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.rfp-bms__date-trigger:hover {
+  border-color: color-mix(in srgb, var(--rfp-accent) 45%, var(--rfp-border) 55%);
+  background: var(--rfp-surface-soft);
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__date-trigger {
+  color: var(--rfp-bms-strong, var(--rfp-text));
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__date-trigger-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rfp-bms-mid, var(--rfp-muted));
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__date-value {
+  font-weight: 500;
+  color: color-mix(in srgb, var(--rfp-accent) 78%, var(--rfp-bms-strong) 22%);
+}
+
+.rfp-bms__calendar-panel {
+  margin-top: 12px;
+  padding: 14px 12px;
+  border-radius: 14px;
+  border: 1px solid var(--rfp-border);
+  background: color-mix(in srgb, var(--rfp-surface-soft) 92%, Canvas 8%);
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.rfp-bms__calendar-panel[hidden] {
+  display: none !important;
+}
+
+.rfp-bms__calendar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.rfp-bms__calendar-title {
+  flex: 1;
+  min-width: 0;
+  text-align: center;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  color: var(--rfp-bms-strong, var(--rfp-text));
+}
+
+.rfp-bms__calendar-prev,
+.rfp-bms__calendar-next {
+  flex-shrink: 0;
+  width: 36px;
+  height: 36px;
+  border-radius: 999px;
+  border: 1px solid var(--rfp-border);
+  background: var(--rfp-surface);
+  color: var(--rfp-bms-mid, var(--rfp-text));
+  cursor: pointer;
+  font-size: 1.15rem;
+  line-height: 1;
+  padding: 0;
+  font: inherit;
+}
+
+.rfp-bms__calendar-prev:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.rfp-bms__calendar-weekdays {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+  margin-bottom: 8px;
+  font-size: 0.62rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--rfp-bms-soft, var(--rfp-muted));
+  text-align: center;
+}
+
+.rfp-bms__calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 4px;
+}
+
+.rfp-bms__calendar-cell {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rfp-bms__calendar-cell--empty span {
+  display: block;
+  min-height: 36px;
+}
+
+.rfp-bms__calendar-day {
+  width: 100%;
+  min-height: 36px;
+  border-radius: 10px;
+  border: none;
+  background: transparent;
+  color: var(--rfp-bms-strong, var(--rfp-text));
+  font-weight: 600;
+  font-size: 0.8125rem;
+  cursor: pointer;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.rfp-bms__calendar-day:hover:not(:disabled):not(.rfp-bms__calendar-day--disabled) {
+  outline: 1px solid color-mix(in srgb, var(--rfp-accent) 35%, transparent);
+  outline-offset: 0;
+}
+
+.rfp-bms__calendar-day--selected {
+  background: color-mix(in srgb, var(--rfp-accent) 18%, var(--rfp-surface) 82%);
+  color: var(--rfp-accent);
+}
+
+.rfp-bms__calendar-day--disabled {
+  opacity: 0.35;
+}
+
+.rfp-booking-dialog .rfp-booking-form.rfp-bms .rfp-bms__calendar-panel {
+  background: color-mix(in srgb, var(--rfp-surface-soft) 88%, Canvas 12%);
+}
+
+.rfp-bms__guest-block {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.rfp-bms__guest-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__guest-label {
+  color: var(--rfp-bms-mid, var(--rfp-text));
+}
+
+.rfp-bms__guest-label {
+  font-weight: 600;
+  font-size: 0.9375rem;
+}
+
+.rfp-bms__stepper {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.rfp-bms__stepper-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 999px;
+  border: 1px solid var(--rfp-border);
+  background: var(--rfp-surface-soft);
+  color: var(--rfp-text);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  padding: 0;
+  font: inherit;
+}
+
+.rfp-bms__stepper-btn:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+.rfp-bms__stepper-btn:disabled {
+  opacity: 0.38;
+  cursor: default;
+}
+
+.rfp-bms__stepper-num {
+  min-width: 1.75rem;
+  text-align: center;
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.rfp-bms__party-bounds {
+  margin: 4px 0 0;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  color: var(--rfp-muted);
+}
+
+.rfp-bms__pricing-details {
+  margin: -2px 0 10px;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  color: var(--rfp-muted);
+  border: 1px solid var(--rfp-border);
+  border-radius: 10px;
+  padding: 2px 10px;
+  background: var(--rfp-surface-soft);
+}
+
+.rfp-bms__pricing-details summary {
+  cursor: pointer;
+  font-weight: 600;
+  color: var(--rfp-text);
+  padding: 6px 0;
+  list-style: none;
+}
+
+.rfp-bms__pricing-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.rfp-bms__pricing-details p {
+  margin: 0 0 8px;
+}
+  margin: 8px 0 4px;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.rfp-bms__estimate {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 12px;
+  padding: 10px 0 0;
+  margin-top: 6px;
+  border-top: 1px dashed var(--rfp-border);
+}
+
+.rfp-bms__estimate[hidden],
+.rfp-bms__party-bounds[hidden] {
+  display: none !important;
+}
+
+.rfp-bms__estimate-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--rfp-muted);
+}
+
+.rfp-bms__estimate-amount {
+  font-weight: 700;
+  color: var(--rfp-text);
+  font-variant-numeric: tabular-nums;
+}
+
+
+.rfp-bms__fineprint {
+  margin: -4px 0 12px;
+  font-size: 0.8125rem;
+  line-height: 1.55;
+  color: var(--rfp-muted);
+}
+
+
+
+.rfp-bms__step {
+  display: grid;
+  gap: 12px;
+}
+
+/* HTML [hidden] must win over display: grid (otherwise every step stays visible before/without JS). */
+.rfp-booking-form .rfp-bms__step[hidden],
+.rfp-bms .rfp-bms__step[hidden] {
+  display: none !important;
+}
+
+.rfp-bms__step label {
+  display: grid;
+  gap: 6px;
+  color: var(--rfp-text);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__step label {
+  color: var(--rfp-bms-soft, var(--rfp-text));
+}
+
+.rfp-bms__step--single label {
+  font-size: 1rem;
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.rfp-bms__step input,
+.rfp-bms__step textarea {
+  width: 100%;
+  border: none;
+  border-radius: 999px;
+  background: var(--rfp-surface-soft);
+  color: var(--rfp-text);
+  padding: 11px 16px;
+  font: inherit;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+.rfp-bms__step textarea {
+  border-radius: 14px;
+  resize: none;
+}
+
+.rfp-bms__step input:focus,
+.rfp-bms__step textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--rfp-accent) 42%, transparent);
+  outline-offset: 2px;
+}
+
+.rfp-bms__req {
+  color: #e53e3e;
+  font-weight: 700;
+}
+
+.rfp-bms__opt {
+  font-weight: 400;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--rfp-muted);
+}
+
+.rfp-bms__review {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.rfp-bms__review > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rfp-border);
+  font-size: 14px;
+}
+
+.rfp-bms__review > div:first-child {
+  padding-top: 0;
+}
+
+.rfp-bms__review dt {
+  color: var(--rfp-muted);
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__review dt {
+  color: var(--rfp-bms-soft, var(--rfp-muted));
+}
+
+.rfp-bms__review dd {
+  font-weight: 600;
+  color: var(--rfp-text);
+  text-align: right;
+  margin: 0;
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__review dd {
+  color: var(--rfp-bms-strong, var(--rfp-text));
+}
+
+.rfp-bms__review dd[data-rfp-rv="message"] {
+  white-space: pre-wrap;
+  max-width: 68%;
+}
+
+.rfp-bms__step--review .rfp-bms__review > div {
+  align-items: flex-start;
+}
+
+.rfp-bms__error {
+  margin-top: 12px;
+  padding: 4px 0 4px 12px;
+  border-left: 2px solid #e53e3e;
+  font-size: 13px;
+  color: #e53e3e;
+}
+
+.rfp-bms__nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: stretch;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--rfp-border);
+  width: 100%;
+  min-width: 0;
+}
+
+.rfp-bms__nav-primary {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  min-width: 0;
+}
+
+.rfp-bms__nav-primary .rfp-bms__back {
+  flex-shrink: 0;
+}
+
+.rfp-bms__nav-primary .rfp-bms__next {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.rfp-bms__submit-floor {
+  align-self: stretch;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 48px;
+  margin-top: 0;
+}
+
+.rfp-bms__submit-floor[hidden],
+.rfp-booking-dialog .rfp-bms .rfp-bms__submit-floor[hidden] {
+  display: none !important;
+}
+
+.rfp-bms__back {
+  flex: 0 0 auto;
+  min-height: 44px;
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--rfp-accent);
+  text-decoration: underline;
+  text-decoration-color: var(--rfp-border);
+  text-underline-offset: 3px;
+  cursor: pointer;
+  transition: text-decoration-color 0.15s;
+}
+
+.rfp-bms__back:hover:not(:disabled) {
+  text-decoration-color: var(--rfp-accent);
+}
+
+.rfp-bms__back:disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.rfp-bms__next {
+  flex: 1;
+  min-height: 44px;
+  border-radius: 10px !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  background: var(--rfp-accent);
+  color: var(--rfp-on-accent);
+  border: none;
+  cursor: pointer;
+  font: inherit;
+  transition: opacity 0.15s;
+}
+
+.rfp-bms__next:hover {
+  opacity: 0.88;
+}
+
+.rfp-bms__submit-floor.rfp-button {
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.08em !important;
+  border-radius: 12px !important;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rfp-booking-form.rfp-bms .rfp-bms__step textarea {
+  resize: vertical;
+  min-height: 84px;
+  max-height: 180px;
+  max-width: 100%;
+}
+
+/* ── Mobile sticky booking bar ─────────────────────────────── */
+.rfp-mobile-bar {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .rfp-mobile-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 200;
+    padding: 10px 12px;
+    padding-bottom: max(10px, env(safe-area-inset-bottom));
+    background: color-mix(in srgb, var(--rfp-surface) 96%, transparent);
+    backdrop-filter: blur(14px);
+    border-top: 1px solid var(--rfp-border);
+    box-shadow: 0 -10px 28px color-mix(in srgb, var(--rfp-text) 12%, transparent);
+  }
+
+  .rfp-tour-detail {
+    padding-bottom: 80px;
+  }
+
+  .rfp-tour-booking {
+    display: none !important;
+  }
+}
+
+@media (min-width: 961px) {
+  .rfp-booking-dialog {
+    max-width: 460px;
+    max-height: 85dvh;
+    margin: auto;
+    border-radius: 20px;
+  }
+}
+
+.rfp-mobile-bar__info {
+  flex: 1;
+  min-width: 0;
+}
+
+.rfp-mobile-bar__price,
+.rfp-mobile-bar__title {
+  display: block;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--rfp-text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.rfp-mobile-bar__btn {
+  flex-shrink: 0;
+  min-height: 42px;
+  padding: 0 16px;
+  border-radius: 999px;
+  font-size: 0.86rem;
+  box-shadow: 0 8px 18px color-mix(in srgb, var(--rfp-accent) 28%, transparent);
+}
+
+@media (max-width: 430px) {
+  .rfp-mobile-bar__title {
+    display: none;
+  }
+
+  .rfp-mobile-bar__btn {
+    min-width: 144px;
+  }
+}
+
+/* ── Mobile booking dialog ──────────────────────────────────── */
+.rfp-booking-dialog {
+  border: none;
+  padding: 0;
+  width: 100%;
+  max-width: 100%;
+  max-height: 92dvh;
+  margin: auto 0 0;
+  border-radius: 20px 20px 0 0;
+  background: var(--rfp-surface);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+.rfp-booking-dialog::backdrop {
+  background: rgba(0, 0, 0, 0.42);
+}
+
+.rfp-booking-dialog__inner {
+  padding: 20px 22px 28px;
+  color: var(--rfp-text);
+  --rfp-bms-soft: color-mix(in srgb, var(--rfp-text) 52%, Canvas 48%);
+  --rfp-bms-mid: color-mix(in srgb, var(--rfp-text) 74%, Canvas 26%);
+  --rfp-bms-strong: color-mix(in srgb, var(--rfp-text) 88%, Canvas 12%);
+}
+
+.rfp-booking-dialog__header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--rfp-border);
+}
+
+.rfp-booking-dialog__header h2 {
+  margin: 4px 0 0;
+  font-size: 1.2rem;
+  color: var(--rfp-bms-strong, var(--rfp-text));
+}
+
+.rfp-booking-dialog__header .rfp-eyebrow {
+  color: var(--rfp-bms-soft, var(--rfp-muted));
+}
+
+.rfp-booking-dialog__close {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  border: 1px solid var(--rfp-border);
+  background: none;
+  font-size: 1rem;
+  color: var(--rfp-muted);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.rfp-booking-dialog__close:hover {
+  background: var(--rfp-surface-soft);
+  color: var(--rfp-text);
+}

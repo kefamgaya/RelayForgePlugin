@@ -1,0 +1,1175 @@
+/**
+ * RelayForge WordPress admin — single source for layout and design tokens.
+ * Shell: .wrap.relayforge-admin.rf-admin-shell (warm gradient).
+ * Settings form: .relayforge-admin__workspace (flat, readable panels).
+ */
+
+/* ── Shared tokens (shell) ───────────────────────────────────── */
+.wrap.relayforge-admin.rf-admin-shell {
+  --rf-bg-top: #fbf7ef;
+  --rf-bg: #f4efe4;
+  --rf-surface: rgba(255, 250, 242, 0.94);
+  --rf-surface-alt: rgba(255, 255, 255, 0.82);
+  --rf-text: #1f2933;
+  --rf-muted: #52606d;
+  --rf-border: rgba(31, 41, 51, 0.12);
+  --rf-accent: #1d6f5f;
+  --rf-on-accent: #f8fffc;
+  --rf-success-border: #065f46;
+  --rf-error-border: #b91c1c;
+  --rf-shadow: none;
+  --rf-accent-glow-a: rgba(29, 111, 95, 0.16);
+  --rf-accent-glow-b: rgba(16, 185, 129, 0.1);
+  max-width: 1240px;
+  margin: 18px 20px 0 0;
+  padding: 10px 22px 22px;
+  border-radius: 0;
+  background: transparent;
+  color: var(--rf-text);
+  box-shadow: none;
+}
+
+.relayforge-admin__hero {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.relayforge-admin__brand-lockup {
+  display: grid;
+  gap: 8px;
+}
+
+.relayforge-admin__brand-logo {
+  display: block;
+  width: min(220px, 100%);
+  height: auto;
+  margin-bottom: 2px;
+}
+
+.relayforge-admin__brand-lockup h1 {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+.relayforge-admin__hero h1 {
+  margin: 0;
+  font-size: 34px;
+  line-height: 1.08;
+}
+
+.relayforge-admin__version {
+  font-size: 12px;
+  color: var(--rf-muted);
+}
+
+.relayforge-admin__sub {
+  margin: 8px 0 0;
+  color: var(--rf-muted);
+  max-width: 88ch;
+}
+
+.relayforge-admin__notices {
+  margin-top: 14px;
+  display: grid;
+  gap: 10px;
+}
+
+.relayforge-admin__notice {
+  border: 1px solid var(--rf-border);
+  border-left: 5px solid var(--rf-success-border);
+  border-radius: 12px;
+  background: var(--rf-surface-alt);
+  padding: 10px 14px;
+  line-height: 1.65;
+}
+
+.relayforge-admin__notice--success {
+  border-left-color: var(--rf-success-border);
+  color: #065f46;
+}
+
+.relayforge-admin__notice--error {
+  border-left-color: var(--rf-error-border);
+}
+
+.relayforge-admin__notice--onboarding {
+  border-left-color: var(--rf-accent);
+  color: var(--rf-text);
+}
+
+/* Status strip (overview) */
+.rf-status-strip {
+  margin-top: 16px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--rf-border);
+  background: var(--rf-surface-alt);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 14px;
+  flex-wrap: wrap;
+}
+
+.rf-status-strip__actions {
+  margin-left: auto;
+}
+
+.rf-status-strip__actions a {
+  font-weight: 700;
+  color: var(--rf-accent);
+  text-decoration: none;
+}
+
+.rf-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.rf-status-dot--ok {
+  background: #065f46;
+}
+
+.rf-status-dot--warn {
+  background: #92400e;
+}
+
+.rf-status-dot--err {
+  background: #b91c1c;
+}
+
+/* Overview stats + links */
+.rf-overview-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.rf-stat-card {
+  border: 1px solid var(--rf-border);
+  border-radius: 18px;
+  background: var(--rf-surface-alt);
+  padding: 20px;
+}
+
+.rf-stat-card__value {
+  font-size: 38px;
+  font-weight: 800;
+  line-height: 1;
+  margin: 6px 0 4px;
+  color: var(--rf-accent);
+}
+
+.rf-stat-card__label {
+  font-size: 13px;
+  color: var(--rf-muted);
+  font-weight: 600;
+}
+
+.rf-overview-links {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.rf-overview-link {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--rf-border);
+  border-radius: 16px;
+  background: var(--rf-surface-alt);
+  padding: 16px;
+  text-decoration: none;
+  color: var(--rf-text);
+  transition: border-color 0.15s;
+}
+
+.rf-overview-link:hover {
+  border-color: var(--rf-accent);
+}
+
+.rf-overview-link strong {
+  font-size: 15px;
+}
+
+.rf-overview-link span {
+  font-size: 13px;
+  color: var(--rf-muted);
+}
+
+/* Get started checklist */
+.rf-get-started {
+  margin-top: 28px;
+  padding: 22px 22px 20px;
+  border: 1px solid var(--rf-border);
+  border-radius: 18px;
+  background: var(--rf-surface-alt);
+}
+
+.rf-get-started h2 {
+  margin: 0 0 6px;
+  font-size: 20px;
+}
+
+.rf-get-started > .relayforge-admin__sub {
+  margin: 0 0 18px;
+}
+
+.rf-checklist {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 14px;
+}
+
+.rf-checklist__item {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 16px;
+  align-items: start;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 1px solid var(--rf-border);
+  background: var(--rf-surface);
+}
+
+.rf-checklist__item--done {
+  border-color: color-mix(in srgb, var(--rf-accent) 35%, var(--rf-border));
+}
+
+.rf-checklist__num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 800;
+  font-size: 13px;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+}
+
+.rf-checklist__item--done .rf-checklist__num {
+  background: #065f46;
+}
+
+.rf-checklist__body h3 {
+  margin: 0 0 4px;
+  font-size: 15px;
+}
+
+.rf-checklist__body p {
+  margin: 0 0 8px;
+  font-size: 13px;
+  color: var(--rf-muted);
+  line-height: 1.5;
+}
+
+.rf-checklist__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.rf-checklist__actions a {
+  font-weight: 700;
+  color: var(--rf-accent);
+  text-decoration: none;
+}
+
+/* Copy shortcode rows */
+.rf-copy-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+.rf-copy-field code {
+  flex: 1;
+  min-width: 200px;
+  padding: 10px 12px;
+  border-radius: 10px;
+  background: rgba(31, 41, 51, 0.06);
+  font-size: 13px;
+}
+
+.rf-copy-field .button.rf-copy-btn {
+  flex-shrink: 0;
+}
+
+.rf-copy-btn.is-copied::after {
+  content: ' ✓';
+}
+
+/* Content browser page */
+.relayforge-content-blurb {
+  margin: 8px 0 0;
+  padding: 12px 16px;
+  border-radius: 12px;
+  border: 1px solid var(--rf-border);
+  background: var(--rf-surface);
+  font-size: 14px;
+  color: var(--rf-muted);
+  line-height: 1.55;
+}
+
+.relayforge-content-search {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.relayforge-content-search input {
+  padding: 9px 14px;
+  border: 1px solid var(--rf-border);
+  border-radius: 12px;
+  background: var(--rf-surface-alt);
+  color: var(--rf-text);
+  font-size: 14px;
+  width: 280px;
+  max-width: 100%;
+}
+
+.relayforge-content-count {
+  font-size: 13px;
+  color: var(--rf-muted);
+}
+
+.relayforge-content-section {
+  margin-top: 28px;
+}
+
+.relayforge-content-section h2 {
+  margin: 0 0 14px;
+  font-size: 20px;
+}
+
+.relayforge-content-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  background: var(--rf-surface-alt);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--rf-border);
+}
+
+.relayforge-content-table th,
+.relayforge-content-table td {
+  padding: 11px 14px;
+  text-align: left;
+  border-bottom: 1px solid var(--rf-border);
+}
+
+.relayforge-content-table th {
+  background: rgba(31, 41, 51, 0.04);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rf-muted);
+  font-weight: 700;
+}
+
+.relayforge-content-table tbody tr:last-child td {
+  border-bottom: 0;
+}
+
+.relayforge-content-table tbody tr:hover td {
+  background: rgba(29, 111, 95, 0.04);
+}
+
+.relayforge-content-table [data-rf-row][hidden] {
+  display: none;
+}
+
+.relayforge-content-badge {
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 11px;
+  font-weight: 700;
+  background: rgba(29, 111, 95, 0.12);
+  color: var(--rf-accent);
+}
+
+.relayforge-content-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 5px 10px;
+  border: 1px solid var(--rf-border);
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--rf-text);
+  background: var(--rf-surface-alt);
+}
+
+.relayforge-content-action:hover {
+  background: var(--rf-accent);
+  border-color: var(--rf-accent);
+  color: var(--rf-on-accent);
+}
+
+.relayforge-content-empty {
+  padding: 24px;
+  text-align: center;
+  color: var(--rf-muted);
+}
+
+.relayforge-content-back {
+  padding: 10px 18px;
+  border: 1px solid var(--rf-border);
+  border-radius: 999px;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--rf-text);
+  background: var(--rf-surface-alt);
+}
+
+.relayforge-content-back:hover {
+  border-color: var(--rf-accent);
+  color: var(--rf-accent);
+}
+
+.relayforge-content-error {
+  margin-top: 14px;
+  padding: 12px 16px;
+  border-left: 4px solid #b91c1c;
+  border-radius: 12px;
+  background: var(--rf-surface-alt);
+}
+
+/* Shortcodes reference */
+.rf-sc-block {
+  border: 1px solid var(--rf-border);
+  border-radius: 18px;
+  background: var(--rf-surface-alt);
+  padding: 20px;
+  margin-bottom: 14px;
+}
+
+.rf-sc-block h2 {
+  margin: 0 0 4px;
+  font-size: 17px;
+  font-family: ui-monospace, monospace;
+  color: var(--rf-accent);
+}
+
+.rf-sc-block p {
+  margin: 4px 0 12px;
+  color: var(--rf-muted);
+  font-size: 14px;
+}
+
+.rf-sc-example {
+  padding: 10px 14px;
+  border-radius: 10px;
+  background: rgba(31, 41, 51, 0.06);
+  font-size: 13px;
+  font-family: ui-monospace, monospace;
+  margin-bottom: 12px;
+}
+
+.rf-sc-attrs {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+
+.rf-sc-attrs th {
+  text-align: left;
+  padding: 7px 10px;
+  background: rgba(31, 41, 51, 0.04);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--rf-muted);
+  border-bottom: 1px solid var(--rf-border);
+}
+
+.rf-sc-attrs td {
+  padding: 7px 10px;
+  border-bottom: 1px solid var(--rf-border);
+  vertical-align: top;
+}
+
+.rf-sc-attrs tr:last-child td {
+  border-bottom: 0;
+}
+
+.rf-sc-attrs code {
+  background: rgba(31, 41, 51, 0.06);
+  border-radius: 4px;
+  padding: 1px 5px;
+}
+
+.rf-sc-tip {
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 14px;
+  border: 1px solid var(--rf-border);
+  background: var(--rf-surface-alt);
+}
+
+.rf-sc-tip h3 {
+  margin: 0 0 8px;
+  font-size: 15px;
+}
+
+.rf-sc-tip p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--rf-muted);
+}
+
+/* Technical help (settings fields) */
+.relayforge-admin__technical {
+  margin: 8px 0 0;
+  font-size: 13px;
+}
+
+.relayforge-admin__technical summary {
+  cursor: pointer;
+  color: var(--rf-muted);
+  font-weight: 600;
+}
+
+.relayforge-admin__technical[open] summary {
+  margin-bottom: 6px;
+}
+
+.relayforge-admin__technical p {
+  margin: 0;
+  color: var(--rf-muted);
+  line-height: 1.5;
+}
+
+/* ── Settings workspace (flat form area inside shell) ────────── */
+.relayforge-admin__workspace {
+  display: block;
+  margin-top: 18px;
+  padding: 0 0 24px;
+  border-radius: 0;
+  border: 0;
+  background: transparent;
+}
+
+.relayforge-admin__tabs {
+  position: static;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 10px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--rf-border);
+}
+
+.relayforge-admin__tab {
+  display: inline-flex !important;
+  align-items: center;
+  gap: 8px;
+  width: auto;
+  margin: 0 !important;
+  text-align: center;
+  border-radius: 0 !important;
+  border: 0 !important;
+  border-bottom: 2px solid transparent !important;
+  background: transparent !important;
+  color: var(--rf-muted) !important;
+  padding: 10px 4px !important;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: none !important;
+}
+
+.relayforge-admin__tab span {
+  font-size: 14px;
+}
+
+.relayforge-admin__tab small {
+  display: none;
+}
+
+.relayforge-admin__tab.is-active {
+  background: transparent !important;
+  border-bottom-color: var(--rf-accent) !important;
+  color: var(--rf-accent) !important;
+}
+
+.relayforge-admin__tab .dashicons {
+  width: 18px;
+  height: 18px;
+  font-size: 18px;
+}
+
+.relayforge-admin__tab:focus-visible {
+  outline: 2px solid var(--rf-accent);
+  outline-offset: 2px;
+}
+
+.relayforge-admin__panel {
+  margin-top: 14px;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  padding: 0 !important;
+  display: none;
+  box-shadow: none !important;
+}
+
+.relayforge-admin__panel.is-active {
+  display: block;
+}
+
+.relayforge-admin__panel-head {
+  border-bottom: 1px solid var(--rf-border);
+  padding-bottom: 14px;
+}
+
+.relayforge-admin__panel-head h2 {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0;
+  font-size: 22px;
+}
+
+.relayforge-admin__panel-head h2 .dashicons {
+  color: var(--rf-accent);
+}
+
+.relayforge-admin__panel-head p {
+  margin: 6px 0 0;
+  color: var(--rf-muted);
+}
+
+.relayforge-admin form {
+  min-width: 0;
+}
+
+.relayforge-admin__grid {
+  margin-top: 18px;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 24px;
+  border-top: none;
+}
+
+.relayforge-admin__field {
+  border: 0 !important;
+  border-bottom: 1px solid var(--rf-border) !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  box-shadow: none !important;
+  padding: 16px 0 !important;
+}
+
+.relayforge-admin__field input,
+.relayforge-admin__field select,
+.relayforge-admin__field textarea {
+  border-radius: 12px !important;
+  box-shadow: none !important;
+  border: 1px solid var(--rf-border);
+  padding: 10px 12px;
+}
+
+.relayforge-admin__field--full {
+  grid-column: 1 / -1;
+}
+
+.relayforge-admin__field label {
+  display: block;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.relayforge-admin__switch-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.relayforge-admin__switch-row label:not(.relayforge-switch) {
+  margin-bottom: 4px;
+}
+
+.relayforge-switch {
+  position: relative;
+  display: inline-flex !important;
+  align-items: center;
+  width: 52px;
+  height: 32px;
+  margin: 0 !important;
+  cursor: pointer;
+  flex: 0 0 auto;
+}
+
+.relayforge-switch input {
+  position: absolute;
+  opacity: 0;
+  width: 1px;
+  height: 1px;
+}
+
+.relayforge-switch span {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  background: #d1d5db;
+  transition: background 0.16s ease;
+}
+
+.relayforge-switch span::before {
+  content: '';
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 2px;
+  left: 2px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.22);
+  transition: transform 0.16s ease;
+}
+
+.relayforge-switch input:checked + span {
+  background: var(--rf-accent);
+}
+
+.relayforge-switch input:checked + span::before {
+  transform: translateX(20px);
+}
+
+.relayforge-switch input:focus-visible + span {
+  outline: 2px solid var(--rf-accent);
+  outline-offset: 3px;
+}
+
+.relayforge-admin__field textarea {
+  min-height: 120px;
+  resize: vertical;
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', monospace;
+  width: 100%;
+}
+
+.relayforge-admin__field small {
+  display: block;
+  margin-top: 8px;
+  color: var(--rf-muted);
+}
+
+.relayforge-admin__hint {
+  color: var(--rf-muted);
+  font-size: 13px;
+  margin-top: 0;
+}
+
+.relayforge-admin__actions {
+  margin-top: 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  border-top: 1px solid var(--rf-border);
+  padding-top: 16px;
+}
+
+.relayforge-admin__save {
+  border: 0;
+  border-radius: 999px;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent);
+  padding: 12px 22px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: none;
+}
+
+.relayforge-admin__save:focus-visible {
+  outline: 2px solid var(--rf-accent);
+  outline-offset: 2px;
+}
+
+.rfp-color-field {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.rfp-color-swatch {
+  width: 40px !important;
+  height: 40px !important;
+  padding: 2px !important;
+  border-radius: 10px !important;
+  border: 1px solid var(--rf-border) !important;
+  background: none !important;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.rfp-color-field input[type='text'] {
+  flex: 1;
+  font-family: ui-monospace, monospace;
+  text-transform: uppercase;
+}
+
+.rfp-color-clear {
+  font-size: 12px !important;
+  padding: 6px 10px !important;
+  background: none !important;
+  border: 1px solid var(--rf-border) !important;
+  border-radius: 8px !important;
+  color: var(--rf-muted) !important;
+  cursor: pointer;
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+@media (max-width: 960px) {
+  .relayforge-admin__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .rf-overview-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .rf-overview-links {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 600px) {
+  .rf-overview-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.relayforge-gallery-selection {
+  margin: 6px 0 12px;
+  font-size: 13px;
+  color: var(--rf-muted);
+}
+
+.relayforge-gallery-selection strong {
+  color: var(--rf-text);
+}
+
+.relayforge-template-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 28px 20px;
+  margin-top: 4px;
+}
+
+.relayforge-template-option {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  padding: 0;
+  margin: 0;
+  box-shadow: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.relayforge-template-option__preview-shell {
+  position: relative;
+  border-radius: 12px;
+  transition: background 0.2s ease, border-color 0.2s ease, padding 0.2s ease;
+}
+
+/* Brand-tinted highlight when this template is active */
+.relayforge-template-option.is-selected-tour:not(.is-selected-destination) .relayforge-template-option__preview-shell {
+  padding: 12px;
+  background: color-mix(in srgb, var(--rf-accent) 16%, transparent);
+  border: 1px solid color-mix(in srgb, var(--rf-accent) 42%, transparent);
+}
+
+.relayforge-template-option.is-selected-destination:not(.is-selected-tour) .relayforge-template-option__preview-shell {
+  padding: 12px;
+  background: color-mix(in srgb, var(--rf-accent) 10%, color-mix(in srgb, #7c3aed 22%, transparent));
+  border: 1px solid color-mix(in srgb, var(--rf-accent) 32%, color-mix(in srgb, #7c3aed 45%, transparent));
+}
+
+.relayforge-template-option.is-selected-tour.is-selected-destination .relayforge-template-option__preview-shell {
+  padding: 12px;
+  background: linear-gradient(
+    145deg,
+    color-mix(in srgb, var(--rf-accent) 18%, transparent) 0%,
+    color-mix(in srgb, #7c3aed 14%, transparent) 100%
+  );
+  border: 1px solid color-mix(in srgb, var(--rf-accent) 38%, transparent);
+}
+
+/* Checkmark badge */
+.relayforge-template-option:is(.is-selected-tour, .is-selected-destination) .relayforge-template-option__preview-shell::before {
+  content: '\2713';
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: 3;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: var(--rf-accent);
+  color: var(--rf-on-accent, #fff);
+  font-size: 15px;
+  font-weight: 800;
+  line-height: 28px;
+  text-align: center;
+  border: 2px solid color-mix(in srgb, var(--rf-on-accent, #fff) 35%, transparent);
+}
+
+.relayforge-template-option__selected-note {
+  margin: 8px 0 0;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: var(--rf-accent);
+}
+
+.relayforge-template-option.is-selected-destination:not(.is-selected-tour) .relayforge-template-option__selected-note {
+  color: color-mix(in srgb, var(--rf-accent) 55%, #5b21b6);
+}
+
+.relayforge-template-option.is-selected-tour.is-selected-destination .relayforge-template-option__selected-note {
+  color: var(--rf-accent);
+}
+
+.relayforge-template-option h3 {
+  margin: 10px 0 4px;
+}
+
+.relayforge-template-option p {
+  margin: 0 0 10px;
+  color: var(--rf-muted);
+}
+
+.relayforge-live-preview,
+.relayforge-template-option__preview {
+  --rfp-accent: var(--rf-accent, #1d6f5f);
+  --rfp-on-accent: var(--rf-on-accent, #f8fffc);
+  --rfp-surface: var(--rf-surface, #ffffff);
+  --rfp-surface-soft: color-mix(in srgb, var(--rf-text, #1f2933) 6%, var(--rf-surface, #ffffff));
+  --rfp-text: var(--rf-text, #1f2933);
+  --rfp-muted: var(--rf-muted, #52606d);
+  --rfp-border: var(--rf-border, #d9dee5);
+  --rfp-hero-overlay: linear-gradient(180deg, color-mix(in srgb, var(--rf-accent, #1d6f5f) 56%, transparent), color-mix(in srgb, var(--rf-accent, #1d6f5f) 78%, transparent));
+  --rf-theme-link: var(--rf-accent, #1d6f5f);
+  --rf-theme-text: var(--rf-text, #1f2933);
+}
+
+.relayforge-template-option__preview {
+  position: relative;
+  overflow: visible;
+  max-height: none;
+  border-radius: 0;
+  margin: 0;
+  padding: 0;
+  pointer-events: none;
+  background: transparent;
+  z-index: 1;
+}
+
+.relayforge-template-option__badge {
+  display: inline-block;
+  margin: 6px 6px 0;
+  padding: 3px 7px;
+  border: 1px solid var(--rf-accent);
+  border-radius: 999px;
+  background: var(--rf-surface, #fff);
+  color: var(--rf-accent);
+  font-size: 11px;
+  font-weight: 700;
+}
+
+/* Cards keep their natural borders and shape so previews match the front end */
+.relayforge-template-option__preview .rfp-card,
+.relayforge-template-option__preview .rfp-user-card {
+  max-width: 100%;
+}
+
+.relayforge-template-option__actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.relayforge-template-option__actions button,
+.relayforge-preview-toolbar button,
+.relayforge-preview-link {
+  border: 1px solid var(--rf-border);
+  border-radius: 4px;
+  background: var(--rf-surface, #fff);
+  padding: 7px 10px;
+  cursor: pointer;
+  font-weight: 700;
+  text-decoration: none;
+  color: var(--rf-text);
+}
+
+.relayforge-template-option__actions button:hover,
+.relayforge-preview-toolbar button.is-active,
+.relayforge-preview-link:hover {
+  background: var(--rf-accent);
+  border-color: var(--rf-accent);
+  color: var(--rf-on-accent, #fff);
+}
+
+.relayforge-help-card {
+  border: 0;
+  border-top: 1px solid var(--rf-border);
+  border-radius: 0;
+  background: transparent;
+  padding: 14px 0 0;
+}
+
+.relayforge-help-card h3 {
+  margin: 0 0 8px;
+}
+
+.relayforge-help-card p {
+  margin: 8px 0;
+}
+
+.relayforge-help-card code {
+  white-space: normal;
+}
+
+.relayforge-preview-toolbar {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.relayforge-live-preview {
+  display: grid;
+  gap: 28px;
+  padding: 0;
+  margin: 8px 0 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+}
+
+.relayforge-live-preview section {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+}
+
+.relayforge-live-preview section h3 {
+  margin: 0 0 12px;
+}
+
+.relayforge-live-preview[data-preview-frame='mobile'] {
+  max-width: 390px;
+  margin-inline: auto;
+}
+
+.relayforge-live-preview[data-preview-frame='mobile'] .rfp-tours-grid {
+  grid-template-columns: 1fr !important;
+}
+
+.relayforge-preview-detail {
+  max-width: 100%;
+  padding: 0;
+}
+
+.relayforge-preview-detail .rfp-tour-hero {
+  min-height: 360px;
+}
+
+.relayforge-preview-detail .rfp-tour-hero h1 {
+  font-size: clamp(2.4rem, 6vw, 4.2rem);
+}
+
+.relayforge-live-preview[data-preview-frame='mobile'] .rfp-tour-layout,
+.relayforge-live-preview[data-preview-frame='mobile'] .rfp-tour-facts {
+  grid-template-columns: 1fr;
+}
+
+.relayforge-live-preview[data-preview-frame='mobile'] .rfp-tour-booking {
+  position: static;
+}
+
+.relayforge-admin__field--advanced-code {
+  border-style: dashed;
+}
+
+@media (max-width: 1100px) {
+  .relayforge-template-gallery {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 782px) {
+  .relayforge-template-gallery {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Typography picker (Design tab) ───────────────────────────── */
+.rfp-font-fieldset {
+  border: 0;
+  border-top: 1px solid var(--rf-border);
+  border-radius: 0;
+  padding: 14px 0 0;
+  margin-top: 8px;
+  background: transparent;
+}
+
+.rfp-font-fieldset legend {
+  padding: 0 8px 0 0;
+}
+
+.rfp-font-mode-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 6px;
+}
+
+.rfp-font-mode-row select {
+  min-width: 220px;
+  max-width: 100%;
+}
+
+.rfp-font-sub {
+  margin-top: 12px;
+}
+
+.rfp-font-sub.hidden {
+  display: none !important;
+}
