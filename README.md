@@ -1,6 +1,36 @@
-# RelayForge WordPress Plugin
+<p align="center">
+  <img src="assets/brand/relayforge-vertical-logo.svg" alt="RelayForge" width="280" />
+</p>
+
+<h1 align="center">RelayForge WordPress Plugin</h1>
+
+<p align="center">
+  <strong>Live travel inventory, branded package pages, secure media, and RelayForge inquiry forms for WordPress.</strong>
+</p>
+
+<p align="center">
+  <img alt="WordPress" src="https://img.shields.io/badge/WordPress-6.2%2B-21759B?logo=wordpress&logoColor=white" />
+  <img alt="PHP" src="https://img.shields.io/badge/PHP-8.0%2B-777BB4?logo=php&logoColor=white" />
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-ES5%2B-F7DF1E?logo=javascript&logoColor=111" />
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-Modern-1572B6?logo=css3&logoColor=white" />
+  <img alt="REST API" src="https://img.shields.io/badge/REST%20API-RelayForge-0F766E?logo=fastapi&logoColor=white" />
+  <img alt="License" src="https://img.shields.io/badge/License-GPLv2%2B-111827" />
+</p>
+
+## Overview
 
 RelayForge WordPress connects a WordPress site to RelayForge and turns live travel inventory into polished, bookable website experiences. It is designed for tour operators, destination marketers, agencies, and travel businesses that need production-ready listings, package pages, inquiry flows, and branded embeds without rebuilding their website.
+
+## Tech Stack
+
+<p>
+  <img alt="WordPress" src="https://img.shields.io/badge/WordPress-CMS-21759B?logo=wordpress&logoColor=white" />
+  <img alt="PHP" src="https://img.shields.io/badge/PHP-Plugin%20Runtime-777BB4?logo=php&logoColor=white" />
+  <img alt="JavaScript" src="https://img.shields.io/badge/JavaScript-Frontend%20Interactions-F7DF1E?logo=javascript&logoColor=111" />
+  <img alt="CSS3" src="https://img.shields.io/badge/CSS3-Responsive%20UI-1572B6?logo=css3&logoColor=white" />
+  <img alt="HTML5" src="https://img.shields.io/badge/HTML5-Templates-E34F26?logo=html5&logoColor=white" />
+  <img alt="REST" src="https://img.shields.io/badge/REST-RelayForge%20API-0F766E?logo=fastapi&logoColor=white" />
+</p>
 
 ## What It Does
 
