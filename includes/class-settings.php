@@ -149,7 +149,7 @@ class RelayForge_Settings
             'manage_options',
             self::OPTION_KEY,
             '__return_null',
-            RELAYFORGE_WP_URL . 'assets/brand/Relayforge-favicon.svg',
+            $this->menu_icon_data_uri(),
             58
         );
 
@@ -188,6 +188,13 @@ class RelayForge_Settings
             self::OPTION_KEY . '_shortcodes',
             [$this, 'render_shortcodes_page']
         );
+    }
+
+    private function menu_icon_data_uri(): string
+    {
+        $svg = '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path fill="#a7aaad" d="M7 11.25a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5Zm10-2a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5Zm0 12a3.25 3.25 0 1 1 0-6.5 3.25 3.25 0 0 1 0 6.5ZM9.76 8.15l4.38-1.38.45 1.43-4.38 1.38-.45-1.43Zm.02 2.27.71-1.32 4.24 2.28-.71 1.32-4.24-2.28Zm4.95 4.18-4.24-2.28.71-1.32 4.24 2.28-.71 1.32Z"/></svg>';
+
+        return 'data:image/svg+xml;base64,' . base64_encode($svg);
     }
 
     public function render_field(array $args): void

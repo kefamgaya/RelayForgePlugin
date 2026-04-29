@@ -44,9 +44,28 @@
 
 .relayforge-admin__brand-logo {
   display: block;
-  width: min(220px, 100%);
+  width: min(180px, 100%);
+  max-height: 58px;
   height: auto;
+  object-fit: contain;
+  object-position: left center;
   margin-bottom: 2px;
+  background: transparent !important;
+}
+
+#adminmenu #toplevel_page_relayforge_wp_settings .wp-menu-image img {
+  width: 20px !important;
+  height: 20px !important;
+  max-width: 20px !important;
+  max-height: 20px !important;
+  object-fit: contain;
+  padding: 7px 0 0 !important;
+  background: transparent !important;
+}
+
+#adminmenu #toplevel_page_relayforge_wp_settings .wp-menu-image {
+  overflow: hidden;
+  background: transparent !important;
 }
 
 .relayforge-admin__brand-lockup h1 {
